@@ -1,5 +1,4 @@
-import { useEffect } from "react";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Stage from "./Stage";
 
 const STAGE_LENGTH = [{ first: 32 }, { second: 48 }, { third: 64 }];
