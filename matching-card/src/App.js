@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 
-// data
-const cards = [
+// initial data
+const initialCards = [
   {
     image: "🦢",
     isOpen: false,
@@ -29,50 +29,100 @@ const cards = [
   },
 ];
 
-const cloneCards = cards.concat(JSON.parse(JSON.stringify(cards)));
+// clone & shake data
+const cloneCards = initialCards.concat(
+  JSON.parse(JSON.stringify(initialCards))
+);
 const shakeCards = cloneCards.sort(() => Math.random() - 0.5);
 
 const App = () => {
+  const [cards, setCards] = useState(shakeCards);
   const [firstSelectCard, setfirstSelectCard] = useState("");
   const [secondSelectCard, setSecondSelectCard] = useState("");
   const [count, setCount] = useState(0);
 
-  // flip, select card
-  const flipHandler = (event) => {
-    setCount(count + 1);
-    shakeCards[event.target.id].isOpen = true;
+  // start all open
+  useEffect(() => {
+    setCards((prevCardsState) => {
+      const copy = [...prevCardsState];
+      copy.forEach((card) => {
+        card.isOpen = true;
+      });
+      return copy;
+    });
+    const closeCardTimer = setTimeout(() => {
+      setCards((prevCardsState) => {
+        const copy = [...prevCardsState];
+        copy.forEach((card) => {
+          card.isOpen = false;
+        });
+        return copy;
+      });
+    }, 3000);
+    return () => {
+      clearTimeout(closeCardTimer);
+    };
+  }, []);
 
+  // user select card
+  const flipHandler = (event) => {
+    const selectCardId = event.target.id;
+    const selectCard = cards[selectCardId];
+
+    // already open
+    if (selectCard.isOpen === true) {
+      return;
+    }
+
+    // count++
+    setCount(count + 1);
     if (count === 0) {
-      setfirstSelectCard(event.target.textContent);
+      selectCard.isOpen = true;
+      setfirstSelectCard(selectCardId);
       return;
     }
     if (count === 1) {
-      setSecondSelectCard(event.target.textContent);
+      selectCard.isOpen = true;
+      setSecondSelectCard(selectCardId);
       return;
     }
   };
 
-  // select result
+  // delay card open
+  const delayOpen = () => {
+    return new Promise((resolve, reject) => {
+      setTimeout(() => {
+        resolve();
+      }, 500);
+    });
+  };
+
+  // result
   useEffect(() => {
+    // get select card image
+    const firstSelectCardImage = cards[firstSelectCard]?.image;
+    const secondSelectCardImage = cards[secondSelectCard]?.image;
+
     if (count === 2) {
-      if (firstSelectCard === secondSelectCard) {
-        console.log("success");
-      }
-      if (firstSelectCard !== secondSelectCard) {
-        console.log("fail");
+      if (firstSelectCardImage !== secondSelectCardImage) {
+        delayOpen().then(() => {
+          cards[secondSelectCard].isOpen = false;
+          cards[firstSelectCard].isOpen = false;
+
+          // reset
+          setfirstSelectCard(null);
+          setSecondSelectCard(null);
+        });
       }
       setCount(0);
-      setfirstSelectCard(null);
-      setSecondSelectCard(null);
     }
-  }, [count, firstSelectCard, secondSelectCard]);
-  console.log(count, firstSelectCard, secondSelectCard);
+  }, [cards, count, firstSelectCard, secondSelectCard]);
 
   return (
     <Styles.Wrap>
-      {shakeCards.map((card, index) => (
+      {cards.map((card, index) => (
         <Styles.Card key={index} id={index} onClick={flipHandler}>
-          {card.isOpen ? card.image : ""}
+          {card.isOpen ? card.image : "open"}
         </Styles.Card>
       ))}
     </Styles.Wrap>
@@ -98,6 +148,9 @@ const Styles = {
     align-items: center;
     justify-content: center;
     cursor: pointer;
+    &:hover {
+      border: 2px solid #444;
+    }
   `,
 };
 

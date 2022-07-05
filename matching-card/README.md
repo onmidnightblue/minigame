@@ -1,70 +1,27 @@
-# Getting Started with Create React App
+#### :hearts::spades: find-deffrent-letter :clubs::diamonds:
+![untitled](https://user-images.githubusercontent.com/92494452/177254942-87f421e4-14fc-46ef-bcd7-f371b6ef6d3a.gif)
+<br />
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+##### condition
+- 2개의 같은 모양 카드를 랜덤하게 섞은 data를 만든다.
+- 3초간 모든 카드를 보여준 후 다시 보이지 않게 한다.
+- 사용자가 카드 1장을 선택하면 해당 카드만 보여준다.
+- 다른 카드 1장을 선택했을 때 이전 카드와 같은 모양의 카드일 경우 오픈된 상태로 둔다.
+- 이전 카드와 다른 모양의 카드일 경우 이전 카드와 현재 선택한 카드를 다시 보이지 않게 한다.
+<br />
 
-## Available Scripts
-
-In the project directory, you can run:
-
-### `npm start`
-
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
-
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
-
-### `npm test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+##### to use
+- object로 이루어진 array data
+- useState, useEffect
+- JSON.parse()
+- JSON.stringify()
+- new Promise(resolve, reject)
+- setTimeout, clearTimeout
+- Math.random()
+- concat()
+- sort()
+- forEach()
+- map()
+- if
+- spread operator
+- ?.
