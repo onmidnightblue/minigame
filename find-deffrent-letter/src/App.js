@@ -32,7 +32,6 @@ const App = () => {
       setIsGaming(false);
       setIsNextStage(false);
     }
-    console.log(isNextStage);
     setIsNextStage(true);
   };
 
