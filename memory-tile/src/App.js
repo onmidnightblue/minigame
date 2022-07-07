@@ -4,10 +4,10 @@ import styled from "styled-components";
 function App() {
   const [computerSelect, setComputerSelect] = useState([]);
   const [userSelect, setUserSelect] = useState([]);
-  const [lightOn, setLightOn] = useState(false);
 
   // tiles
   const tiles = [];
+  let tileLayout;
   const tilesLength = 9;
   for (let i = 0; i < tilesLength; i++) {
     tiles.push(i);
@@ -30,52 +30,42 @@ function App() {
     setUserSelect([...userSelect, +userSelectTile]);
   };
 
-  console.log("computer: ", computerSelect);
-  console.log("user: ", userSelect);
+  console.log(computerSelect, userSelect);
 
   // show computer's pick....
-
-  // computerSelect에서 요소 하나씩 꺼내서 돌리기
   useEffect(() => {
     for (let i of computerSelect) {
-      // tiles에서 요소 하나씩 꺼내서 돌리기
       for (let k of tiles) {
         if (i === k) {
-          // 여기서 시간차가 필요함
-          console.log(i, k);
-          setLightOn(true);
-          setTimeout(() => {
-            setLightOn(false);
-          }, 500);
+          // code
         }
       }
     }
-  }, []);
+  }, [computerSelect, tiles, tileLayout]);
 
-  // next stage...
+  // next stage
   if (computerSelect.length === userSelect.length) {
     const setNext =
       JSON.stringify(computerSelect) === JSON.stringify(userSelect);
     if (setNext) {
-      console.log("next");
+      // code
     }
     if (!setNext) {
-      console.log("fail");
+      // code
     }
   }
 
-  return (
-    <Styles.Wrap>
-      {tiles.map((tile, index) => (
-        <Styles.Tile
-          key={index}
-          id={index}
-          className={lightOn ? "lightOn" : ""}
-          onClick={getIndexHandler}
-        />
-      ))}
-    </Styles.Wrap>
-  );
+  // tiles map
+  tileLayout = tiles.map((tile, index) => (
+    <Styles.Tile
+      key={index}
+      id={index}
+      className={""}
+      onClick={getIndexHandler}
+    />
+  ));
+
+  return <Styles.Wrap>{tileLayout}</Styles.Wrap>;
 }
 
 // styled
