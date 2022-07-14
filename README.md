@@ -62,7 +62,7 @@ with react
 <br />
 <br />
 
-#### :hearts::spades: find-deffrent-letter :clubs::diamonds:
+#### :hearts::spades: matching-card :clubs::diamonds:
 <hr />
 
 [README.md](https://github.com/onmidnightblue/minigame/blob/e7e3315f0ecd8a59c183c65617988aeca25fabd4/matching-card/README.md)
